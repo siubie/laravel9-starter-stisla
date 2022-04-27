@@ -1,0 +1,23 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd /var/www/v2starter/
+            git pull
+            composer install
+            npm install
+            npm run prod
+            php artisan migrate:refresh --seed
