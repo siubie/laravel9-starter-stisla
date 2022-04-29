@@ -34,13 +34,16 @@ class UserListTest extends TestCase
 
         //assert ada variabel users
         $response->assertViewHas('users');
+
+        $response->assertSeeText('superadmin@gmail.com');
     }
 
-    public function test_superadmin_can_see_user_list_paging()
+    public function test_superadmin_can_see_paging_user_list()
     {
-        // $this->withoutExceptionHandling();
         //login superadmin
         $this->actingAs(User::find(1));
+
+        User::factory()->count(10)->create();
 
         //buka halaman user
         $response = $this->get('/user-management/user');
@@ -51,16 +54,16 @@ class UserListTest extends TestCase
         //assert ada variabel users
         $response->assertViewHas('users');
 
+        //ada superadmin nya
         $response->assertSeeText('superadmin@gmail.com');
 
-        //buka page 2
-        $pageTwo = $this->get('user-management/user?page=2');
+        //ada keliatan text paging nya
+        $response->assertSeeTextInOrder(["1", "2"]);
 
-        //pastikan response 200
-        $pageTwo->assertStatus(200);
+        //buka halaman selanjutnya
+        $response = $this->get('/user-management/user?page=2');
 
-        // dd($pageTwo->getContent());
-        //assert ada variabel users
-        $pageTwo->assertSeeText('12');
+        //keliatan paging 11
+        $response->assertSeeText("11");
     }
 }
