@@ -66,7 +66,7 @@
                                         <input type="password" name="password"
                                             class="form-control @error('password') is-invalid @enderror"
                                             placeholder="Masukkan Password">
-                                        @error('email')
+                                        @error('password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
