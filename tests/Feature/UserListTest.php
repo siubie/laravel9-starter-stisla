@@ -17,10 +17,14 @@ class UserListTest extends TestCase
      */
     public function test_superadmin_can_see_user_list()
     {
+        //login superadmin
         $this->actingAs(User::find(1));
 
+        //buka halaman user
         $response = $this->get('/user-management/user');
 
+        //pastikan response 200
         $response->assertStatus(200);
+        $response->assertViewHas('users');
     }
 }
