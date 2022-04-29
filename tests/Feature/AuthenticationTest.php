@@ -10,6 +10,11 @@ use Tests\TestCase;
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
+    public function setup(): void
+    {
+        # code...
+        parent::setUp();
+    }
     /**
      * A basic feature test example.
      *
