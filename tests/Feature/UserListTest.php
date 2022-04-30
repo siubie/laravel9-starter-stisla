@@ -91,7 +91,6 @@ class UserListTest extends TestCase
 
     public function test_user_can_search_and_result_shown_in_list_with_paging()
     {
-
         //login admin
         $this->actingAs(User::find(1));
 
