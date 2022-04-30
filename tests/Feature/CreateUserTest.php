@@ -64,7 +64,7 @@ class CreateUserTest extends TestCase
             ]
         );
 
-        $response->assertSessionHasErrors(["name"]);
+        $response->assertSessionHasErrors(["name" => "The name field is required."]);
     }
 
     public function test_email_field_required()
@@ -79,7 +79,7 @@ class CreateUserTest extends TestCase
             ]
         );
 
-        $response->assertSessionHasErrors(["email"]);
+        $response->assertSessionHasErrors(["email" => "The email field is required."]);
     }
 
     public function test_password_field_required()
@@ -94,6 +94,30 @@ class CreateUserTest extends TestCase
             ]
         );
 
-        $response->assertSessionHasErrors(["password"]);
+        $response->assertSessionHasErrors(["password" => "The password field is required."]);
+    }
+
+    public function test_email_field_unique()
+    {
+        //tambahkan post ke /create
+        $this->post(
+            '/user-management/user',
+            [
+                "name" => "Hora Umum",
+                "email" => "supersekali@gmail.com",
+                "password" => Hash::make("password"),
+            ]
+        );
+        //create yang sama sekali lagi
+        $response = $this->post(
+            '/user-management/user',
+            [
+                "name" => "Hora Umum",
+                "email" => "supersekali@gmail.com",
+                "password" => Hash::make("password"),
+            ]
+        );
+
+        $response->assertSessionHasErrors(["email" => "The email has already been taken."]);
     }
 }
