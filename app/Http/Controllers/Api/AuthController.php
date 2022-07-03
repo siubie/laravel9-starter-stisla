@@ -28,7 +28,13 @@ class AuthController extends Controller
             ]);
         }
 
-        return $user->createToken($request->device_name)->plainTextToken;
+        $user->assignRole('user');
+        return response()->json(
+            [
+                'token' => $user->createToken($request->device_name)->plainTextToken,
+            ],
+            200
+        );
     }
 
     public function register(Request $request)
@@ -46,7 +52,12 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return $user->createToken($request->device_name)->plainTextToken;
+        return response()->json(
+            [
+                'token' => $user->createToken($request->device_name)->plainTextToken,
+            ],
+            200
+        );
     }
 
     public function logout(Request $request)

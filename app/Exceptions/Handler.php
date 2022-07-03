@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +36,13 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        $this->renderable(function (NotFoundHttpException $e) {
             //
+            return response()->json(['message' => 'Object Not Found'], 404);
+        });
+        $this->renderable(function (AuthenticationException $e) {
+            //
+            return response()->json(['message' => 'Unauthenticated or Token Expired'], 429);
         });
     }
 }
