@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,6 +34,11 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //index -> menampilkan tabel data
+
+        Category::create([
+            "name" => "Masuk User Page",
+        ]);
+
         // mengambil data
         $users = DB::table('users')
             ->when($request->input('name'), function ($query, $name) {
