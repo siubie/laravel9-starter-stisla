@@ -24,7 +24,6 @@ services:
             - sail
         depends_on:
             - mysql
-            - mailhog
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
