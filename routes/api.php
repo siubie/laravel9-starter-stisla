@@ -31,6 +31,6 @@ Route::group(
     function () {
         // Route::apiResource('categories', CategoryController::class);
         Route::post('/auth/logout', [AuthController::class, 'logout']);
-        Route::apiResource('categories', CategoryController::class);
+        Route::apiResource('/category', CategoryController::class);
     }
 );
