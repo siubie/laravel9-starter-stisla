@@ -1,7 +1,31 @@
-describe('Example Test', () => {
-    it('shows a homepage', () => {
-        cy.visit('/');
+// test suite
+describe("our first test", () => {
+    // test case
+    it("can open page", () => {
+        // arrange
+        // pengen buka halaman home
+        cy.visit("/");
+        // act
 
-        cy.contains('Laravel');
+        // assert
+        cy.contains("Login");
+    });
+    it("can open page", () => {
+        // arrange
+        // pengen buka halaman home
+        cy.visit("/");
+        // act
+
+        // assert
+        cy.contains("Sevima");
+    });
+    it("can open page", () => {
+        // arrange
+        // pengen buka halaman home
+        cy.visit("/");
+        // act
+
+        // assert
+        cy.contains("Login");
     });
 });

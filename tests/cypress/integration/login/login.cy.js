@@ -1,13 +1,26 @@
 describe("Test Login Page", () => {
+    before(() => {});
+    beforeEach(() => {
+        //script login
+    });
     //positive test
     it("user can login with correct username and password", () => {
         //arrange
+        //buka halaman login
+        cy.visit("/login");
         //act
+        //isi username dan password
+        cy.get(":nth-child(2) > .form-control").type("superadmin@gmail.com");
+        cy.get(":nth-child(3) > .form-control").type("password");
+        //clik tombol login
+        cy.get(".btn").click();
         //assert
+        //pastikan username nya SuperAdmin
+        cy.get(".nav-link > .d-sm-none").contains("SuperAdmin");
     });
 
     //negative test
-    it("user can not login when username and password is empty", () => {
+    it.only("user can not login when username and password is empty", () => {
         //arrange
         //act
         //assert

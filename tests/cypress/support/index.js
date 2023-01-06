@@ -15,18 +15,20 @@
 
 /// <reference types="./" />
 
-import './laravel-commands';
-import './laravel-routes';
-import './assertions';
+import "./laravel-commands";
+import "./laravel-routes";
+import "./assertions";
 
+//sebelum satu test file dijalankan
 before(() => {
-    cy.task('activateCypressEnvFile', {}, { log: false });
-    cy.artisan('config:clear', {}, { log: false });
+    cy.task("activateCypressEnvFile", {}, { log: false });
+    cy.artisan("config:clear", {}, { log: false });
 
     cy.refreshRoutes();
 });
 
+//setelah satu test file dijalankan
 after(() => {
-    cy.task('activateLocalEnvFile', {}, { log: false });
-    cy.artisan('config:clear', {}, { log: false });
+    cy.task("activateLocalEnvFile", {}, { log: false });
+    cy.artisan("config:clear", {}, { log: false });
 });
