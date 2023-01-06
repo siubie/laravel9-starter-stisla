@@ -1,0 +1,30 @@
+{
+    "project": "siakad-v2",
+    "user": "syerlinadya",
+    "log": [
+        {
+            "repository": "https://github.com/Syerlinadya/aplikasi-kasir.git",
+            "hash": "5cb1a1dabb3ff2db29090b819c89c98c2a1bd038",
+            "author_name": "noobs07",
+            "author_email": "noobs0789@gmail.com",
+            "author_datetime": "2022-12-15 18:40:59",
+            "commit_message": "update terbaru",
+            "activity": "commit",
+            "file_changed": 12,
+            "insertions": 13337,
+            "deletions": 43
+        },
+        {
+            "repository": "https://github.com/Syerlinadya/aplikasi-kasir.git",
+            "hash": "88958a1d42f80407f5d7ee3d8a2d405c56d3cee0",
+            "author_name": "syerlinadya",
+            "author_email": "syerlitrinadya14@gmail.com",
+            "author_datetime": "2022-06-29 05:34:43",
+            "commit_message": "perbaikan delete transaksi",
+            "activity": "commit",
+            "file_changed": 2,
+            "insertions": 10,
+            "deletions": 4
+        }
+    ]
+}

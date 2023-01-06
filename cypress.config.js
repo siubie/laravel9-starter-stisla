@@ -2,9 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
     chromeWebSecurity: false,
-    retries: 2,
-    viewportHeight: 1080,
-    viewportWidth: 1920,
+    // viewportHeight: 1080,
+    // viewportWidth: 1920,
     defaultCommandTimeout: 5000,
     watchForFileChanges: false,
     videosFolder: "tests/cypress/videos",
