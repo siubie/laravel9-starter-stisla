@@ -3,11 +3,14 @@ name: Auto Deploy
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    
+
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
