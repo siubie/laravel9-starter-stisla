@@ -2,68 +2,44 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Contract\AuthContract;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginApiRequest;
+use App\Http\Requests\RegisterApiRequest;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
+use Utils\ApiResponseUtils;
 
 class AuthController extends Controller
 {
-    //
-    public function login(Request $request)
+
+    protected AuthContract $service;
+
+    public function __construct(AuthContract $service)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'device_name' => 'required',
-        ]);
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
-
-        $user->assignRole('user');
-        return response()->json(
-            [
-                'token' => $user->createToken($request->device_name)->plainTextToken,
-            ],
-            200
-        );
+        $this->service = $service;
     }
 
-    public function register(Request $request)
+    public function login(LoginApiRequest $request): JsonResponse
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => ['required', 'string', 'min:8', 'confirmed', Password::defaults()],
-            'device_name' => 'required',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return response()->json(
-            [
-                'token' => $user->createToken($request->device_name)->plainTextToken,
-            ],
-            200
-        );
+        $response = $this->service->login($request->all());
+        return ApiResponseUtils::response($response, "success login");
     }
 
-    public function logout(Request $request)
+    public function register(RegisterApiRequest $request): JsonResponse
     {
-        auth()->user()->tokens()->delete();
-        return response()->noContent();
+        $response = $this->service->register($request->all());
+        return ApiResponseUtils::response($response, "success register");
+    }
+
+    public function logout(): JsonResponse
+    {
+        $response = $this->service->logout();
+        return ApiResponseUtils::response($response, "success register");
     }
 }
