@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\RoleAndPermission\AssignPermissionController;
-use App\Http\Controllers\RoleAndPermission\AssignUserToRoleController;
-use App\Http\Controllers\RoleAndPermission\ExportRoleController;
-use App\Http\Controllers\RoleAndPermission\ImportRoleController;
-use App\Http\Controllers\RoleAndPermission\RoleController;
+use App\Http\Controllers\Permission\AssignPermissionController;
+use App\Http\Controllers\Role\AssignUserToRoleController;
+use App\Http\Controllers\Role\ExportRoleController;
+use App\Http\Controllers\Role\ImportRoleController;
+use App\Http\Controllers\Role\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["prefix" => "role"], function () {
@@ -28,6 +28,4 @@ Route::group(["prefix" => "role"], function () {
     Route::resource("", RoleController::class);
     Route::get("export", ExportRoleController::class)->name("role.export");
     Route::post("import", ImportRoleController::class)->name("role.import");
-
-
 });

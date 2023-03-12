@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\RoleAndPermission;
+namespace App\Http\Controllers\Permission;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAssignRequest;
