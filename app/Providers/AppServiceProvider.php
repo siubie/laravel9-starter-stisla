@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contract\AuthContract;
+use App\Service\AuthService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -18,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind(AuthContract::class, AuthService::class);
     }
 
     /**

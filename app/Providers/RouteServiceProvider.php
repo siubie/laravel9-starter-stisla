@@ -18,9 +18,12 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')->middleware('api')->group(base_path('routes/api.php'));
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')->group(base_path('routes/web.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
 
             $this->mapWebRoutes();
             $this->mapApiRoutes();
@@ -47,8 +50,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         foreach (glob(base_path('routes/web/*.php')) as $file) {
-            Route::prefix('api')
-                ->namespace($this->namespace)
+            Route::namespace($this->namespace)
                 ->middleware('web')
                 ->group($file);
         }
