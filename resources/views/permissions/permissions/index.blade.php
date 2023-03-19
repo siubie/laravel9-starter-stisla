@@ -25,8 +25,8 @@
                         <div class="card-header">
                             <h4>Permission List</h4>
                             <div class="card-header-action">
-                                <a class="btn btn-icon icon-left btn-primary"
-                                    href="{{ route('permission.create') }}">Create New
+                                <a class="btn btn-icon icon-left btn-primary" href="{{ route('permission.create') }}">Create
+                                    New
                                     Permission</a>
                                 <a class="btn btn-info btn-primary active import">
                                     <i class="fa fa-download" aria-hidden="true"></i>
@@ -95,7 +95,7 @@
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <input type="hidden" name="_token"
                                                                 value="{{ csrf_token() }}">
-                                                            <button class="btn btn-sm btn-danger btn-icon "><i
+                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete"><i
                                                                     class="fas fa-times"></i> Delete </button>
                                                         </form>
                                                     </div>
