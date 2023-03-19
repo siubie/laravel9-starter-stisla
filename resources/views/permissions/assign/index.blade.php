@@ -64,7 +64,7 @@
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
                                                         <a href="{{ route('assign.edit', $role->id) }}"
-                                                            class="btn btn-sm btn-info btn-icon "><i
+                                                            class="btn btn-sm btn-info btn-icon confirm-delete"><i
                                                                 class="fas fa-edit"></i>
                                                             Edit</a>
                                                     </div>
