@@ -161,13 +161,14 @@
       "HEAD"
     ]
   },
-  "generated::jXaEtmOpjbWhWBLO": {
-    "name": "generated::jXaEtmOpjbWhWBLO",
+  "": {
+    "name": null,
     "domain": null,
-    "action": "Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@store",
-    "uri": "login",
+    "action": "Closure",
+    "uri": "dashboard",
     "method": [
-      "POST"
+      "GET",
+      "HEAD"
     ]
   },
   "logout": {
@@ -227,15 +228,6 @@
       "HEAD"
     ]
   },
-  "generated::qBDzkILbCowsQyx1": {
-    "name": "generated::qBDzkILbCowsQyx1",
-    "domain": null,
-    "action": "Laravel\\Fortify\\Http\\Controllers\\RegisteredUserController@store",
-    "uri": "register",
-    "method": [
-      "POST"
-    ]
-  },
   "verification.notice": {
     "name": "verification.notice",
     "domain": null,
@@ -283,16 +275,6 @@
       "PUT"
     ]
   },
-  "generated::Lm3e4r6G9i7o6OFH": {
-    "name": "generated::Lm3e4r6G9i7o6OFH",
-    "domain": null,
-    "action": "Laravel\\Fortify\\Http\\Controllers\\ConfirmablePasswordController@show",
-    "uri": "user/confirm-password",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
   "password.confirmation": {
     "name": "password.confirmation",
     "domain": null,
@@ -320,15 +302,6 @@
     "method": [
       "GET",
       "HEAD"
-    ]
-  },
-  "generated::R8ENeq7tmiF93k6k": {
-    "name": "generated::R8ENeq7tmiF93k6k",
-    "domain": null,
-    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorAuthenticatedSessionController@store",
-    "uri": "two-factor-challenge",
-    "method": [
-      "POST"
     ]
   },
   "two-factor.enable": {
@@ -388,25 +361,6 @@
       "HEAD"
     ]
   },
-  "generated::k126pGdC5Aaygl9i": {
-    "name": "generated::k126pGdC5Aaygl9i",
-    "domain": null,
-    "action": "Laravel\\Fortify\\Http\\Controllers\\RecoveryCodeController@store",
-    "uri": "user/two-factor-recovery-codes",
-    "method": [
-      "POST"
-    ]
-  },
-  "generated::cdZwR0ccJGtpTNZg": {
-    "name": "generated::cdZwR0ccJGtpTNZg",
-    "domain": null,
-    "action": "Laravel\\Sanctum\\Http\\Controllers\\CsrfCookieController@show",
-    "uri": "sanctum/csrf-cookie",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
   "ignition.healthCheck": {
     "name": "ignition.healthCheck",
     "domain": null,
@@ -431,43 +385,6 @@
     "domain": null,
     "action": "Spatie\\LaravelIgnition\\Http\\Controllers\\UpdateConfigController",
     "uri": "_ignition/update-config",
-    "method": [
-      "POST"
-    ]
-  },
-  "generated::gTU0D9MM4cTnGDb6": {
-    "name": "generated::gTU0D9MM4cTnGDb6",
-    "domain": null,
-    "action": "Closure",
-    "uri": "api/user",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
-  "generated::ROBx7sLYGagjtadW": {
-    "name": "generated::ROBx7sLYGagjtadW",
-    "domain": null,
-    "action": "App\\Http\\Controllers\\Api\\AuthController@login",
-    "uri": "api/auth/login",
-    "method": [
-      "POST"
-    ]
-  },
-  "generated::yOXnJ2CgxMN31uqX": {
-    "name": "generated::yOXnJ2CgxMN31uqX",
-    "domain": null,
-    "action": "App\\Http\\Controllers\\Api\\AuthController@register",
-    "uri": "api/auth/register",
-    "method": [
-      "POST"
-    ]
-  },
-  "generated::jInjuzywU91aYMnp": {
-    "name": "generated::jInjuzywU91aYMnp",
-    "domain": null,
-    "action": "App\\Http\\Controllers\\Api\\AuthController@logout",
-    "uri": "api/auth/logout",
     "method": [
       "POST"
     ]
@@ -518,26 +435,6 @@
     "uri": "api/category/{category}",
     "method": [
       "DELETE"
-    ]
-  },
-  "generated::tdRThCxoapzes1gW": {
-    "name": "generated::tdRThCxoapzes1gW",
-    "domain": null,
-    "action": "Closure",
-    "uri": "/",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
-  "generated::g7bTxC98PTTejQRl": {
-    "name": "generated::g7bTxC98PTTejQRl",
-    "domain": null,
-    "action": "Closure",
-    "uri": "dashboard",
-    "method": [
-      "GET",
-      "HEAD"
     ]
   },
   "user.index": {
