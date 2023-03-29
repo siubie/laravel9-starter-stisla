@@ -1,23 +1,59 @@
-name: Auto Deploy
+name: Laravel Test with MySQL
 
-on:
-  push:
-    branches: [master]
+on: [push]
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
-    steps:    
-      - name: Deployment
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          username: ${{ secrets.SSH_USERNAME }}
-          script: |
-            cd /var/www/v2starter/
-            git pull
-            composer install
-            npm install
-            npm run prod
-            php artisan migrate:refresh --seed
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: laravel_test
+          MYSQL_USER: laravel
+          MYSQL_PASSWORD: laravel
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        extensions: mbstring, pdo_mysql, exif, pcntl, zip
+
+    - name: Install Dependencies
+      run: composer install --no-interaction
+
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+    - name: Generate App Key
+      run: php artisan key:generate
+
+    - name: Run Database Migrations
+      env:
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
+        DB_DATABASE: laravel_test
+        DB_USERNAME: laravel
+        DB_PASSWORD: laravel
+      run: php artisan migrate:fresh --seed
+
+    - name: Run Tests
+      env:
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
+        DB_DATABASE: laravel_test
+        DB_USERNAME: laravel
+        DB_PASSWORD: laravel
+      run: vendor/bin/phpunit --filter=MahasiswaTest
